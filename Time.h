@@ -11,7 +11,9 @@
 class Time {
 public:
     Time(int h = 0, int m = 0, int s = 0);
+
     bool isValid() const;
+
     std::string to24() const; // HH:MM:SS
 private:
     int hour, minute, second;
