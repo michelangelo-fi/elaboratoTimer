@@ -28,10 +28,10 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent){
     layout->addWidget(button);
     setCentralWidget(central);
 
-    // ---------- connessioni ----------
+    //connessioni
     connect(button, &QPushButton::clicked, this, &MainWindow::toggleTimer);
 
-    // callback dal thread Timer → GUI (queued)
+    // callback dal thread Timer alla GUI
     myTimer.onTick([this](int sec) {
         QMetaObject::invokeMethod(display, [this, sec] {
             display->setText(format(sec));

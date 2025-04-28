@@ -44,7 +44,7 @@ bool Timer::isRunning()  const { return running; }
 int  Timer::remaining()  const { return secondsLeft; }
 
 void Timer::workerLoop()
-{while (running && secondsLeft > 0) {
+{while (running && secondsLeft >= 0) {
         if (tickCb) tickCb(secondsLeft);
         std::this_thread::sleep_for(std::chrono::seconds(1));
         --secondsLeft;}

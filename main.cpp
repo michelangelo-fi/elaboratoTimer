@@ -9,21 +9,21 @@
 #include <thread>
 #endif
 
-int main(int argc, char *argv[])
+int main(int argc, char *argv[]) //argc = 1, argv[0] = "./elaboratoTimer" sono i par. default
 {
 #ifdef QT_WIDGETS_LIB
-    /*---------------- GUI Qt ----------------*/
+    //con finestra
     QApplication app(argc, argv);
 
     MainWindow w;
     w.setWindowTitle("Simple Timer");
-    w.resize(300, 150);
+    w.resize(600, 300);
     w.show();
 
     return app.exec();
 
 #else
-    /*---------------- Modalità CLI ----------------*/
+    //con interfaccia da terminale
     std::cout << "=== Simple Timer CLI ===\nInserisci i secondi: ";
     int sec{};
     std::cin >> sec;
