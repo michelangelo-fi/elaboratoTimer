@@ -3,7 +3,6 @@ find_package(GTest REQUIRED)
 enable_testing()
 
 set(TEST_SOURCES
-        runTest.cpp
         DateTest.cpp
         TimeTest.cpp
         TimerTest.cpp

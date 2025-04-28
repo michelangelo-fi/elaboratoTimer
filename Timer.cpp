@@ -3,14 +3,27 @@
 //
 
 #include "Timer.h"
+#include <chrono>
 #include <sstream>
 #include <iomanip>
 
-Timer::Timer(int totalSec){ start(totalSec); }
+Timer::Timer(int totalSec) {start(totalSec);}
+
+Timer::~Timer() {stop();}
 
 void Timer::start(int totalSec){
-    secondsLeft = totalSec > 0 ? totalSec : 0;
-    running = secondsLeft > 0;  //se 0>0 allora running= false
+
+    stop();
+    if (totalSec <= 0) return;
+    secondsLeft = totalSec;
+    running = true;
+
+    worker = std::thread(&Timer::workerLoop, this);
+}
+
+void Timer::stop(){
+    running = false;
+    if (worker.joinable()) worker.join();
 }
 
 void Timer::tick(){
@@ -18,15 +31,33 @@ void Timer::tick(){
     if(--secondsLeft <= 0){ //non misura tempo, fa solo il conto dei secondi che mancano
         secondsLeft = 0; //forzo a 0 per evitare numeri negativi
         running = false;
+        if (finishCb)
+                finishCb();
     }
+    else
+    {if (tickCb)
+                tickCb(secondsLeft);}
 }
 
 bool Timer::isFinished() const { return !running; }
 bool Timer::isRunning()  const { return running; }
 int  Timer::remaining()  const { return secondsLeft; }
 
-std::string Timer::remainingStr() const {
+void Timer::workerLoop()
+{while (running && secondsLeft > 0) {
+        if (tickCb) tickCb(secondsLeft);
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+        --secondsLeft;}
 
+    running = false;
+    if (finishCb) finishCb();
+}
+
+void Timer::onTick(TickCB cb)     { tickCb   = std::move(cb); }
+void Timer::onFinish(FinishCB cb) { finishCb = std::move(cb); }
+
+
+std::string Timer::remainingStr() const {
     int h = secondsLeft/3600, m=(secondsLeft%3600)/60, s=secondsLeft%60;
     std::ostringstream oss;
     oss << std::setfill('0') << std::setw(2) << h << ":" << std::setw(2)
