@@ -7,4 +7,6 @@ add_executable(elaboratoTimer main.cpp
         Date.cpp
         Date.h
         Time.cpp
-        Time.h)
+        Time.h
+        Timer.cpp
+        Timer.h)
