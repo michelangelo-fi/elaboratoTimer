@@ -2,8 +2,10 @@
 #include "Timer.h"
 
 #ifdef QT_WIDGETS_LIB       // definita da qmake/Qt-cmake se Widgets presente
+
 #include <QApplication>
 #include "MainWindow.h"
+
 #else
 #include <iostream>
 #include <thread>
