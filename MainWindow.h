@@ -9,22 +9,27 @@
 
 QT_BEGIN_NAMESPACE
 class QLabel;
+
 class QLineEdit;
+
 class QPushButton;
+
 QT_END_NAMESPACE
 
 #include "Timer.h"   // o forward declaration se vuoi
 
 class MainWindow : public QMainWindow {
-    Q_OBJECT
+Q_OBJECT
 public:
     explicit MainWindow(QWidget *parent = nullptr);
 
 private slots:
-            void toggleTimer();
+
+    void toggleTimer();
 
 private:
     static QString format(int sec);
+
     QLabel *display;
     QLineEdit *input;
     QPushButton *button;

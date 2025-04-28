@@ -8,10 +8,10 @@
 #include <QIntValidator>
 #include <QMetaObject>
 
-MainWindow::MainWindow(QWidget *parent): QMainWindow(parent){
+MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
 
     auto *central = new QWidget(this);
-    auto *layout  = new QVBoxLayout(central);
+    auto *layout = new QVBoxLayout(central);
 
     display = new QLabel("00:00:00", this);
     display->setAlignment(Qt::AlignCenter);
@@ -45,8 +45,7 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent){
     });
 }
 
-void MainWindow::toggleTimer()
-{
+void MainWindow::toggleTimer() {
     if (myTimer.isRunning()) {
         myTimer.stop();
         display->setText("00:00:00");
@@ -63,8 +62,7 @@ void MainWindow::toggleTimer()
 }
 
 
-QString MainWindow::format(int sec)
-{
+QString MainWindow::format(int sec) {
     int h = sec / 3600;
     int m = (sec % 3600) / 60;
     int s = sec % 60;
