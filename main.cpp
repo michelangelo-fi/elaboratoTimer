@@ -22,27 +22,6 @@ int main(int argc, char *argv[]) //argc = 1, argv[0] = "./elaboratoTimer" sono i
 
     return app.exec();
 
-#else
-    //con interfaccia da terminale
-    std::cout << "=== Simple Timer CLI ===\nInserisci i secondi: ";
-    int sec{};
-    std::cin >> sec;
-
-    Timer t;
-    t.start(sec);
-
-    t.onTick([](int s) {
-        std::cout << "Rimangono " << s << " s\r" << std::flush;
-    });
-    t.onFinish([] {
-        std::cout << "\nFatto!\n";
-    });
-
-    // attesa finché il timer non termina
-    while (t.isRunning())
-        std::this_thread::sleep_for(std::chrono::milliseconds(100));
-
-    return 0;
 #endif
 }
 

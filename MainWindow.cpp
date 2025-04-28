@@ -28,7 +28,7 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent){
     layout->addWidget(button);
     setCentralWidget(central);
 
-    //connessioni
+    //connessioni tra i bottoni della finestra e l'interfaccia di timer
     connect(button, &QPushButton::clicked, this, &MainWindow::toggleTimer);
 
     // callback dal thread Timer alla GUI
