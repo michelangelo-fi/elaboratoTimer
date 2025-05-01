@@ -16,7 +16,7 @@ class QPushButton;
 
 QT_END_NAMESPACE
 
-#include "Timer.h"   // o forward declaration se vuoi
+#include "Timer.h"
 
 class MainWindow : public QMainWindow {
 Q_OBJECT

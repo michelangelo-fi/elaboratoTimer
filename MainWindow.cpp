@@ -4,7 +4,6 @@
 #include <QLabel>
 #include <QLineEdit>
 #include <QPushButton>
-#include <QTimer>
 #include <QIntValidator>
 #include <QMetaObject>
 
