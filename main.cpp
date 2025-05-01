@@ -1,7 +1,6 @@
-// main.cpp
-#include "Timer.h"
 
-#ifdef QT_WIDGETS_LIB       // definita da qmake/Qt-cmake se Widgets presente
+
+#ifdef QT_WIDGETS_LIB
 
 #include <QApplication>
 #include "MainWindow.h"
