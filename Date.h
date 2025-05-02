@@ -1,6 +1,4 @@
-//
-// Created by michelangelo on 28/04/25.
-//
+
 
 #ifndef ELABORATOTIMER_DATE_H
 #define ELABORATOTIMER_DATE_H
