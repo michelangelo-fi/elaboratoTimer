@@ -3,15 +3,18 @@
 #include <chrono>
 #include <sstream>
 #include <iomanip>
+#include <stdexcept>
 
-Timer::Timer(int totalSec) { start(totalSec); }
 
+Timer::Timer() { start(0); }
+//errore è inutile passare totalsec sia al metodo start che a quello del costruttore
 Timer::~Timer() { stop(); }
 
 void Timer::start(int totalSec) {
 
     stop();
-    if (totalSec <= 0) return;
+    if (totalSec < 0) //errore: meglio mettere un'eccezione
+        throw std::invalid_argument("Timer duration must be positive");
     secondsLeft = totalSec;
     running = true;
 

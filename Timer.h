@@ -12,7 +12,7 @@ public:
     using TickCB = std::function<void(int)>; // chiamato ogni secondo
     using FinishCB = std::function<void()>;    // chiamato a 0
 
-    explicit Timer(int totalSec = 0);
+    explicit Timer();
 
     ~Timer();
 
@@ -20,7 +20,6 @@ public:
 
     void stop();
 
-    void tick();               // decrementa di 1 s
 
     bool isFinished() const;
 
@@ -35,6 +34,8 @@ public:
 
 private:
     void workerLoop();
+
+    void tick();               // decrementa di 1 s
 
     std::thread worker;
     std::atomic<int> secondsLeft{0};
