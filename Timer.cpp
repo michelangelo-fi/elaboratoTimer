@@ -6,8 +6,8 @@
 #include <stdexcept>
 
 
-Timer::Timer() { start(0); }
-//errore è inutile passare totalsec sia al metodo start che a quello del costruttore
+Timer::Timer() : secondsLeft{0}, running{false} {}
+
 Timer::~Timer() { stop(); }
 
 void Timer::start(int totalSec) {
@@ -39,7 +39,7 @@ void Timer::tick() {
     }
 }
 
-bool Timer::isFinished() const { return !running; }
+bool Timer::isFinished() const { return secondsLeft == 0; } //cambiato, è meglio nel caso si voglia mettere un pause
 
 bool Timer::isRunning() const { return running; }
 
