@@ -9,11 +9,12 @@ class Date {
 public:
     Date(int d = 1, int m = 1, int y = 1970);
 
-    bool isValid() const;
-
     std::string toIso() const; // Y-M-D
-private:
+
     bool isLeap() const;
+
+private:
+    bool isValid() const;
 
     int day, month, year;
 };

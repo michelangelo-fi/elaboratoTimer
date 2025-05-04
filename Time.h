@@ -1,21 +1,17 @@
-//
-// Created by michelangelo on 28/04/25.
-//
 
 #ifndef ELABORATOTIMER_TIME_H
 #define ELABORATOTIMER_TIME_H
 
 #include <string>
 
-
 class Time {
 public:
-    Time(int h = 0, int m = 0, int s = 0);
-
-    bool isValid() const;
+   explicit Time(int h = 0, int m = 0, int s = 0);
 
     std::string to24() const; // HH:MM:SS
 private:
+    bool isValid() const;
+
     int hour, minute, second;
 };
 

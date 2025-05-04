@@ -3,7 +3,10 @@
 #include <sstream>
 #include <iomanip>
 
-Time::Time(int h, int m, int s) : hour(h), minute(m), second(s) {}
+Time::Time(int h, int m, int s) : hour(h), minute(m), second(s) {
+    if(!isValid())
+        throw std::invalid_argument("Invalid date");
+}
 
 bool Time::isValid() const {
     return hour >= 0 && hour < 24 && minute >= 0 && minute < 60 && second >= 0 && second < 60;

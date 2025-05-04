@@ -1,12 +1,12 @@
-//
-// Created by michelangelo on 28/04/25.
-//
 
 #include "Date.h"
 #include <sstream>
 #include <iomanip>
 
-Date::Date(int d, int m, int y) : day(d), month(m), year(y) {}
+Date::Date(int d, int m, int y) : day(d), month(m), year(y) {
+    if (!isValid())
+        throw std::invalid_argument("Invalid date");
+}
 
 bool Date::isLeap() const {  //controllo se è bisestile
     return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
